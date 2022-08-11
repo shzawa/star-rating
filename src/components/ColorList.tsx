@@ -1,23 +1,11 @@
-import { useState } from 'react'
 import Color, { ColorProps } from './Color'
 
+// TODO: typeディレクトリに移管
 type ColorType = {
   id: string
   title: string
   color: string
   rating: number
-}
-
-export const useColors = (colorData: ColorType[]) => {
-  const [colors, setColors] = useState(colorData)
-  const removeColor: ColorProps['onRemove'] = (id) => {
-    setColors(colors => colors.filter(color => color.id !== id))
-  }
-  const rateColor: ColorProps['onRate'] = (id, ratio) => {
-    setColors(colors => colors.map(color => color.id === id ? { ...color, ratio } : color))
-  }
-
-  return [colors, { removeColor, rateColor }] as const
 }
 
 export type ColorListProps = {

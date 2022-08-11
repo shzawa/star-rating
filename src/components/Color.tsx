@@ -1,3 +1,4 @@
+import React from "react"
 import { FaTrash } from "react-icons/fa"
 import StarRating, { StarRatingProps } from "./StarRating"
 
@@ -11,7 +12,9 @@ export type ColorProps = {
 }
 
 const Color: React.FC<ColorProps> = ({ id, title, color, rating, onRemove, onRate }) => {
-  const handleStarRatingClick: StarRatingProps['onRate'] = (rating) => { onRate(id, rating) }
+  const handleStarRatingClick: StarRatingProps['onRate'] = (rating) => {
+    onRate(id, rating)
+  }
 
   return (
     <section>
@@ -25,4 +28,4 @@ const Color: React.FC<ColorProps> = ({ id, title, color, rating, onRemove, onRat
   )
 }
 
-export default Color
+export default React.memo(Color)

@@ -1,17 +1,21 @@
 import './App.css';
-import ColorList, { useColors } from './components/ColorList';
+import AddColorForm from './components/AddColorForm';
+import ColorList from './components/ColorList';
 import colorData from './data/color.json'
-
+import { useColors } from './hooks/useColors';
 
 const App = () => {
-  const [colors, { removeColor, rateColor }] = useColors(colorData)
+  const [{onNewColor, ...colorsProps}] = useColors(colorData)
 
   return (
-    <ColorList
-      colors={colors}
-      onRemoveColor={removeColor}
-      onRateColor={rateColor}
-    />
+    <>
+      <AddColorForm
+        onNewColor={onNewColor}
+      />
+      <ColorList
+        {...colorsProps}
+      />
+    </>
   )
 }
 
