@@ -3,10 +3,10 @@ import Star from "./Star"
 export type StarRatingProps = {
   totalStars?: number
   selectedStars?: number
-  onRate: (rating: number) => void
+  onRate?: (rating: number) => void
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ totalStars = 5, selectedStars = 0, onRate = (rating) => void 0 }) => {
+const StarRating: React.FC<StarRatingProps> = ({ totalStars = 5, selectedStars = 0, onRate = () => void 0 }) => {
   const handleSelect = (starIndex: number) => { onRate(starIndex + 1) }
 
   return (

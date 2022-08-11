@@ -1,15 +1,12 @@
 import React from "react"
 import { FaTrash } from "react-icons/fa"
+import { ColorType } from "../types/color"
 import StarRating, { StarRatingProps } from "./StarRating"
 
 export type ColorProps = {
-  id: string
-  title: string
-  color: string
-  rating: number
   onRemove: (id: string) => void
   onRate: (id: string, rating: number) => void
-}
+} & ColorType
 
 const Color: React.FC<ColorProps> = ({ id, title, color, rating, onRemove, onRate }) => {
   const handleStarRatingClick: StarRatingProps['onRate'] = (rating) => {

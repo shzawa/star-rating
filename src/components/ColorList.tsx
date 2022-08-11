@@ -1,12 +1,5 @@
+import { ColorType } from '../types/color'
 import Color, { ColorProps } from './Color'
-
-// TODO: typeディレクトリに移管
-type ColorType = {
-  id: string
-  title: string
-  color: string
-  rating: number
-}
 
 export type ColorListProps = {
   colors?: ColorType[]
@@ -14,7 +7,7 @@ export type ColorListProps = {
   onRateColor: ColorProps['onRate']
 }
 
-const ColorList: React.FC<ColorListProps> = ({ colors = [], onRemoveColor = (id) => void 0, onRateColor = (id, ratio) => void 0 }) => {
+const ColorList: React.FC<ColorListProps> = ({ colors = [], onRemoveColor = () => void 0, onRateColor = () => void 0 }) => {
   if (!colors.length) return <div>No Colors Listed. (Add a Color)</div>
 
   return (

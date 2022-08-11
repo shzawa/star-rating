@@ -3,10 +3,10 @@ import { ComponentPropsWithoutRef } from "react"
 import { useInput } from "../hooks/useInput"
 
 type AddColorFormProps = {
-  onNewColor?: (title: string, color: string) => void
+  onNewColor: (title: string, color: string) => void
 }
 
-const AddColorForm: React.FC<AddColorFormProps> = ({ onNewColor = () => void 0 }) => {
+const AddColorForm: React.FC<AddColorFormProps> = ({ onNewColor }) => {
   const [titleProps, resetTitle] = useInput('')
   const [colorProps, resetColor] = useInput('#000000')
 
@@ -16,7 +16,6 @@ const AddColorForm: React.FC<AddColorFormProps> = ({ onNewColor = () => void 0 }
     resetTitle()
     resetColor()
   }
-
 
   return (
     <form onSubmit={handleSubmit}>
