@@ -1,18 +1,15 @@
-import React from "react"
-import { ComponentPropsWithoutRef } from "react"
+import { useContext, ComponentPropsWithoutRef } from "react"
+import { handleEventColorContext } from "../context/ColorContext"
 import { useInput } from "../hooks/useInput"
 
-type AddColorFormProps = {
-  onNewColor: (title: string, color: string) => void
-}
-
-const AddColorForm: React.FC<AddColorFormProps> = ({ onNewColor }) => {
+const AddColorForm: React.FC = () => {
+  const dispatch = useContext(handleEventColorContext)
   const [titleProps, resetTitle] = useInput('')
   const [colorProps, resetColor] = useInput('#000000')
 
   const handleSubmit: ComponentPropsWithoutRef<'form'>['onSubmit'] = (e) => {
     e.preventDefault()
-    onNewColor(titleProps.value, colorProps.value)
+    dispatch({ type: 'add', payload: { title: titleProps.value, color: colorProps.value } })
     resetTitle()
     resetColor()
   }
@@ -26,4 +23,4 @@ const AddColorForm: React.FC<AddColorFormProps> = ({ onNewColor }) => {
   )
 }
 
-export default React.memo(AddColorForm)
+export default AddColorForm

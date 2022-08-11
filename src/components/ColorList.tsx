@@ -1,18 +1,15 @@
-import { ColorType } from '../types/color'
-import Color, { ColorProps } from './Color'
+import { useContext } from 'react'
+import { colorContext } from '../context/ColorContext'
+import Color from './Color'
 
-export type ColorListProps = {
-  colors?: ColorType[]
-  onRemoveColor: ColorProps['onRemove']
-  onRateColor: ColorProps['onRate']
-}
+const ColorList: React.FC = () => {
+  const { colors } = useContext(colorContext)
 
-const ColorList: React.FC<ColorListProps> = ({ colors = [], onRemoveColor = () => void 0, onRateColor = () => void 0 }) => {
   if (!colors.length) return <div>No Colors Listed. (Add a Color)</div>
 
   return (
     <div>
-      {colors.map((color) => <Color key={color.id} {...color} onRemove={onRemoveColor} onRate={onRateColor} />)}
+      {colors.map((color) => <Color key={color.id} {...color} />)}
     </div>
   )
 }
