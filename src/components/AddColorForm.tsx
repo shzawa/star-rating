@@ -1,4 +1,4 @@
-import { ComponentPropsWithoutRef } from "react"
+import { ComponentProps } from "react"
 import { useColorsDispatcher } from "../context/ColorContext"
 import { useInput } from "../hooks/useInput"
 
@@ -7,7 +7,7 @@ const AddColorForm: React.FC = () => {
   const [titleProps, resetTitle] = useInput('')
   const [colorProps, resetColor] = useInput('#000000')
 
-  const handleSubmit: ComponentPropsWithoutRef<'form'>['onSubmit'] = (e) => {
+  const handleSubmit: ComponentProps<'form'>['onSubmit'] = (e) => {
     e.preventDefault()
     dispatch({ type: 'add', payload: { title: titleProps.value, color: colorProps.value } })
     resetTitle()

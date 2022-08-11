@@ -11,14 +11,13 @@ export const useColorsState = () => useContext(ColorsStateContext)
 const ColorsDispatcherContext = createContext<React.Dispatch<ColorActionProp>>(() => void 0)
 export const useColorsDispatcher = () => useContext(ColorsDispatcherContext)
 
-export const ColorsProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const ColorsProvider: React.FC<{ children: React.ReactNode }> = (props) => {
+  const { children } = props
   const [state, dispatch] = useReducer(colorReducer, { colors })
 
   return (
     <ColorsStateContext.Provider value={state}>
-      カラー層
       <ColorsDispatcherContext.Provider value={dispatch}>
-        カラーイベント層
         {children}
       </ColorsDispatcherContext.Provider>
     </ColorsStateContext.Provider>

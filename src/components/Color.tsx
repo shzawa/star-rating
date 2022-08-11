@@ -1,10 +1,13 @@
-import React from "react"
+import { memo } from "react"
 import { FaTrash } from "react-icons/fa"
 import { useColorsDispatcher } from "../context/ColorContext"
 import { ColorType } from "../types/color"
 import StarRating, { StarRatingProps } from "./StarRating"
 
-const Color: React.FC<ColorType> = ({ id, title, color, rating }) => {
+type ColorProps = ColorType
+
+const Color: React.FC<ColorProps> = (props) => {
+  const { id, title, color, rating } = props
   const dispatch = useColorsDispatcher()
 
   const handleClickTrashButton: React.DOMAttributes<HTMLButtonElement>['onClick'] = () => {
@@ -27,4 +30,4 @@ const Color: React.FC<ColorType> = ({ id, title, color, rating }) => {
   )
 }
 
-export default React.memo(Color)
+export default memo(Color)

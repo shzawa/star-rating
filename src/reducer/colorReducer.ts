@@ -14,7 +14,7 @@ export type ColorActionProp = {
   payload: Pick<ColorType, 'id' | 'rating'>
 }
 
-export const colorReducer = (state: ColorState , action: ColorActionProp) => {
+export const colorReducer = (state: ColorState , action: ColorActionProp): ColorState => {
   const { colors } = state
   const { type, payload } = action
 

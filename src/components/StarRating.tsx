@@ -6,7 +6,9 @@ export type StarRatingProps = {
   onRate?: (rating: number) => void
 }
 
-const StarRating: React.FC<StarRatingProps> = ({ totalStars = 5, selectedStars = 0, onRate = () => void 0 }) => {
+const StarRating: React.FC<StarRatingProps> = (props) => {
+  const { totalStars = 5, selectedStars = 0, onRate = () => void 0 } = props
+
   return (
     <>
       {[...Array(totalStars)].map((_, i) => (
