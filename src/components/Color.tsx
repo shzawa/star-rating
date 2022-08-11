@@ -1,11 +1,11 @@
-import React, { useContext } from "react"
+import React from "react"
 import { FaTrash } from "react-icons/fa"
-import { handleEventColorContext } from "../context/ColorContext"
+import { useColorsDispatcher } from "../context/ColorContext"
 import { ColorType } from "../types/color"
 import StarRating, { StarRatingProps } from "./StarRating"
 
 const Color: React.FC<ColorType> = ({ id, title, color, rating }) => {
-  const dispatch = useContext(handleEventColorContext)
+  const dispatch = useColorsDispatcher()
 
   const handleClickTrashButton: React.DOMAttributes<HTMLButtonElement>['onClick'] = () => {
     dispatch({ type: 'remove', payload: { id } })

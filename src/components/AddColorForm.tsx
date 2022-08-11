@@ -1,9 +1,9 @@
-import { useContext, ComponentPropsWithoutRef } from "react"
-import { handleEventColorContext } from "../context/ColorContext"
+import { ComponentPropsWithoutRef } from "react"
+import { useColorsDispatcher } from "../context/ColorContext"
 import { useInput } from "../hooks/useInput"
 
 const AddColorForm: React.FC = () => {
-  const dispatch = useContext(handleEventColorContext)
+  const dispatch = useColorsDispatcher()
   const [titleProps, resetTitle] = useInput('')
   const [colorProps, resetColor] = useInput('#000000')
 

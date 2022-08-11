@@ -1,9 +1,8 @@
-import { useContext } from 'react'
-import { colorContext } from '../context/ColorContext'
+import { useColorsState } from '../context/ColorContext'
 import Color from './Color'
 
 const ColorList: React.FC = () => {
-  const { colors } = useContext(colorContext)
+  const { colors } = useColorsState()
 
   if (!colors.length) return <div>No Colors Listed. (Add a Color)</div>
 
