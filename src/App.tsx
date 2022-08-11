@@ -1,26 +1,18 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import ColorList, { useColors } from './components/ColorList';
+import colorData from './data/color.json'
 
-function App() {
+
+const App = () => {
+  const [colors, { removeColor, rateColor }] = useColors(colorData)
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <ColorList
+      colors={colors}
+      onRemoveColor={removeColor}
+      onRateColor={rateColor}
+    />
+  )
 }
 
 export default App;
